@@ -5,7 +5,7 @@
     [
       "@semantic-release/release-notes-generator",
       {
-        "preset": "conventional",
+        "preset": "conventionalcommits",
         "parserOpts": {
           "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES"]
         },
