@@ -40,9 +40,9 @@ module.exports = {
 
 ## Rules
 
-| Rule                                                       | Description                                    |
-| ---------------------------------------------------------- | ---------------------------------------------- |
-| `[no-processes-layer](./docs/rules/no-processes-layer.md)` | Ensure deprecated processes layer is not used. |
+| Rule                                                     | Description                                    |
+| -------------------------------------------------------- | ---------------------------------------------- |
+| [no-processes-layer](./docs/rules/no-processes-layer.md) | Ensure deprecated processes layer is not used. |
 
 ## Contribution
 
