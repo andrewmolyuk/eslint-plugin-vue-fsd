@@ -9,3 +9,45 @@
 [![License](https://img.shields.io/npm/l/eslint-plugin-vue-fsd.svg)](LICENSE)
 
 A custom ESLint plugin for enforcing FSD patterns in Vue projects.
+
+> [!NOTE]
+> The project is in active development and may have breaking changes in minor versions, but we will strive to keep changes minimal and well-documented.
+
+![FSD Pattern](docs/assets/fsd.png)
+
+## Features
+
+- Enforces FSD (Feature-Sliced Design) architecture patterns in Vue.js projects.
+- Provides a set of rules and guidelines for structuring Vue components and their interactions.
+- Includes a set of predefined configurations for different project setups.
+
+## Installation
+
+```bash
+npm install eslint-plugin-vue-fsd --save-dev
+```
+
+## Usage
+
+```javascript
+import vueFsdPlugin from 'eslint-plugin-vue-fsd'
+
+// .eslintrc.js
+module.exports = {
+  ...vueFsdPlugin.configs.recommended,
+}
+```
+
+## Rules
+
+| Rule                                                       | Description                                    |
+| ---------------------------------------------------------- | ---------------------------------------------- |
+| `[no-processes-layer](./docs/rules/no-processes-layer.md)` | Ensure deprecated processes layer is not used. |
+
+## Contribution
+
+Pull requests and issues are welcome! Please follow the code style and add tests for new rules.
+
+## License
+
+MIT, see [LICENSE](./LICENSE) for details.

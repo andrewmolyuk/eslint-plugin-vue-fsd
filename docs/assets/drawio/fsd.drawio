@@ -1,0 +1,262 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2">
+  <diagram id="zezrFcpkzjrrApu1CN3O" name="Basics">
+    <mxGraphModel dx="2960" dy="2148" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="App" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="30" y="120" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="Pages" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="30" y="180" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="Widgets" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="30" y="240" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="Features&lt;span style=&quot;font-family: monospace; font-size: 0px; text-align: start; text-wrap-mode: nowrap;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22Widgets%22%20style%3D%22rounded%3D0%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3Bsketch%3D1%3BcurveFitting%3D1%3Bjiggle%3D2%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22125%22%20y%3D%22200%22%20width%3D%2265%22%20height%3D%2250%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="30" y="300" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="Entities" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="30" y="360" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="Shared" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="30" y="420" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="Global Composition" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="390" y="120" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="Starter Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;perimeterSpacing=0;shadow=0;glass=0;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="225" y="130" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="App configuration" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=none;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="505" y="270" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="Global logic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=none;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="180" y="270" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="Module composition" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=none;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="340" y="260" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="Global interfaces implementation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="240" y="512.5" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="If you need data from the app - define interface lower and implement it in the app" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;spacingTop=0;spacing=2;" parent="1" vertex="1">
+          <mxGeometry x="410" y="405" width="245" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="Very flexible layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="205" y="415" width="155" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="App" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="975" y="120" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="Pages" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="975" y="180" width="145" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="Widgets" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="975" y="240" width="145" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="24" value="Features&lt;span style=&quot;font-family: monospace; font-size: 0px; text-align: start; text-wrap-mode: nowrap;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22Widgets%22%20style%3D%22rounded%3D0%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3Bsketch%3D1%3BcurveFitting%3D1%3Bjiggle%3D2%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22125%22%20y%3D%22200%22%20width%3D%2265%22%20height%3D%2250%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="975" y="300" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="25" value="Entities" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="975" y="360" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="26" value="Shared" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="975" y="420" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="27" value="Composition" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1335" y="120" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="28" value="Visualization" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;perimeterSpacing=0;shadow=0;glass=0;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1160" y="130" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="30" value="Define shape of the UI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=none;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1140" y="270" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="31" value="Flat structure" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=none;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1350" y="260" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="32" value="Can contain a lot UI logic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="1130" y="390" width="205" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="33" value="Flashy architecture" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="1385" y="380" width="180" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="34" value="Can be large" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="1150" y="500" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="35" value="Cross using is not allowed on the same level" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="1130" y="590" width="205" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="36" value="Can&#39;t contain business logic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="1375" y="600" width="190" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="37" value="Unstable layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="1360" y="485" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="38" value="Don&#39;t use widgets if possible" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="1265" y="690" width="225" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="39" value="App" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1880" y="120" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="40" value="Pages" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1880" y="180" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="41" value="Widgets" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1880" y="240" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="42" value="Features" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1880" y="300" width="145" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="43" value="Entities" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1880" y="360" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="44" value="Shared" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1880" y="420" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="45" value="Use Cases" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="2240" y="120" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="46" value="Active&lt;div style=&quot;font-size: 22px;&quot;&gt;Business Layer&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;perimeterSpacing=0;shadow=0;glass=0;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="2030" y="130" width="185" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="47" value="Actions on the app" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=none;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="2085" y="270" width="165" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="48" value="Visualize all app activity" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=none;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="2290" y="260" width="190" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="49" value="Can contain UI logic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="2050" y="390" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="50" value="Flashy architecture" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="2290" y="380" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="51" value="In terms of business" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="2030" y="485" width="175" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="52" value="Cross using is not allowed on the same level" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="2070" y="680" width="230" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="54" value="Local states" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="2260" y="460" width="135" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="56" value="Group&lt;span style=&quot;background-color: transparent; font-size: 16px;&quot;&gt;ing&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="2330" y="527.5" width="135" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="58" value="Forms, Buttons, Modals" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="2260" y="592" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="59" value="App" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="499" y="850" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="60" value="Pages" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="499" y="910" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="61" value="Widgets" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="499" y="970" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="62" value="Features" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="499" y="1030" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="63" value="Entities" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="499" y="1090" width="145" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="64" value="Shared" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="499" y="1150" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="65" value="Domain Entities" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="859" y="850" width="175" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="66" value="Abstract Business Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;perimeterSpacing=0;shadow=0;glass=0;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="634" y="860" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="67" value="Domain" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=none;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="704" y="1000" width="135" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="68" value="Stores" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=none;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="909" y="1085" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="69" value="Don&#39;t granulate so much" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="654" y="1284" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="70" value="Factory better then singleton" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="874" y="1182.5" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="71" value="In terms of business" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="674" y="1197" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="72" value="Cross using is not allowed on the same level" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="644" y="1510" width="207.5" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="73" value="&lt;span style=&quot;font-size: 16px;&quot;&gt;Control invariants in the entity boundaries&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="899" y="1270" width="200" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="75" value="Slots actively used" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="691.5" y="1380" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="76" value="Entities relationship should be implemented in the upper layers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="874" y="1390" width="260" height="87" as="geometry" />
+        </mxCell>
+        <mxCell id="77" value="Can contain simple CRUD logic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=none;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="869" y="980" width="225" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="78" value="Control invariants in the app boundaries" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="2025" y="580" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="79" value="Reusable UI components" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=none;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="694" y="1080" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="80" value="Be accurate with large UI elements&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="899" y="1520" width="215" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="81" value="App" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1438" y="850" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="82" value="Pages" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1438" y="910" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="83" value="Widgets" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1438" y="970" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="84" value="Features" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1438" y="1030" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="85" value="Shared" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1438" y="1150" width="145" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="86" value="Entities" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1438" y="1090" width="65" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="88" value="Infrastructure Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;perimeterSpacing=0;shadow=0;glass=0;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1698" y="860" width="162" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="89" value="lib" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=none;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1643" y="1000" width="135" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="92" value="Public API is optional" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="1885" y="1260" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="93" value="Cross usage allowed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="1620" y="1137" width="170.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="94" value="Modules should be stable" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="1825" y="1145" width="225" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="95" value="Can define interfaces and context for implementation in upper layes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="1600" y="1250" width="238" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="98" value="uikit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=none;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1810" y="970" width="143" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="99" value="api" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=none;fontSize=22;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1805" y="1060" width="102" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="101" value="Can&#39;t contain business logic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="1685" y="1365" width="192" height="75" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
