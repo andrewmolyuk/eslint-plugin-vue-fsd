@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "PKief.material-icon-theme",
+    "streetsidesoftware.code-spell-checker",
+    "vitest.explorer"
+  ]
+}
