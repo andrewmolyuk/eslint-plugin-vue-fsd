@@ -28,6 +28,13 @@ npm install eslint-plugin-vue-fsd --save-dev
 
 ## Usage
 
+We provide two predefined configurations to help enforce FSD principles in your Vue.js projects.
+
+- recommended - enables the rules that recommended best practices for FSD and Vue.js development.
+- all - enables all of the rules shipped with eslint-plugin-vue-fsd.
+
+Eslint v9+ configuration (Recommended):
+
 ```javascript
 import vueFsdPlugin from 'eslint-plugin-vue-fsd'
 
@@ -37,11 +44,43 @@ module.exports = {
 }
 ```
 
+Legacy Eslint v8 configuration:
+
+```javascript
+import vueFsdPlugin from 'eslint-plugin-vue-fsd'
+
+// .eslintrc.js
+module.exports = {
+  extends: ['plugin:vue-fsd/legacy/recommended'],
+}
+```
+
 ## Rules
+
+The plugin provides the rules to enforce [Feature-Sliced Design](https://feature-sliced.design/) principles in [Vue.js](https://vuejs.org/) projects.
 
 | Rule                                                     | Description                                    |
 | -------------------------------------------------------- | ---------------------------------------------- |
 | [no-processes-layer](./docs/rules/no-processes-layer.md) | Ensure deprecated processes layer is not used. |
+
+## Roadmap
+
+As the plugin evolves, we plan to implement the following rules:
+
+- no-higher-level-imports: Forbid imports from higher layers.
+- no-cross-slice-imports: Forbid cross-imports between slices on the same layer.
+- no-layer-public-api: Forbid exposing public APIs from a layer.
+- no-segments-without-slices: Forbid segments without slices.
+- public-api: Enforce consistent public API on slices.
+- no-ui-in-app: Forbid using UI segment in the app layer.
+- no-direct-imports: Forbid direct imports from outside the slice.
+- enforce-slice-relative-path: Imports within one slice should be relative.
+- slice-naming: Enforce consistent naming conventions for slices.
+- composables-naming: Enforce consistent naming conventions for composables.
+- components-naming: Enforce consistent naming conventions for components.
+- sfc-sections-order: Enforce consistent order of top-level sections in single-file components.
+
+We are always open to suggestions and contributions for new rules and improvements.
 
 ## Contribution
 
