@@ -74,11 +74,12 @@ As the plugin evolves, we plan to implement the following rules:
 - public-api: Enforce consistent public API on slices.
 - no-ui-in-app: Forbid using UI segment in the app layer.
 - no-direct-imports: Forbid direct imports from outside the slice.
-- enforce-slice-relative-path: Imports within one slice should be relative.
+- slice-relative-path: Imports within one slice should be relative.
 - slice-naming: Enforce consistent naming conventions for slices.
 - composables-naming: Enforce consistent naming conventions for composables.
 - components-naming: Enforce consistent naming conventions for components.
 - sfc-sections-order: Enforce consistent order of top-level sections in single-file components.
+- no-orphaned-files: Forbid orphaned files that are not part of any slice.
 
 We are always open to suggestions and contributions for new rules and improvements.
 
