@@ -11,8 +11,9 @@
   },
   "keywords": [
     "eslint",
-    "vue3",
+    "vue",
     "fsd",
+    "feature-sliced-design",
     "boundaries",
     "architecture"
   ],
