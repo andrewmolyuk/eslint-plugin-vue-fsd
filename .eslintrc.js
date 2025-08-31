@@ -1,0 +1,31 @@
+module.exports = {
+  env: {
+    node: true,
+    es2022: true,
+  },
+  extends: ['eslint:recommended'],
+  parserOptions: {
+    ecmaVersion: 2022,
+    sourceType: 'module',
+  },
+  rules: {
+    complexity: ['error', { max: 10 }],
+  },
+  overrides: [
+    {
+      files: ['test/**/*.js'],
+      env: {
+        jest: true,
+      },
+      globals: {
+        expect: 'readonly',
+        describe: 'readonly',
+        it: 'readonly',
+        test: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+      },
+    },
+  ],
+  ignorePatterns: ['node_modules/', 'dist/', '.git/', 'examples/', '**/*.d.ts', 'coverage/'],
+}

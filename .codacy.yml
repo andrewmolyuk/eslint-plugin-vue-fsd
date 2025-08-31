@@ -6,18 +6,21 @@ exclude_paths:
   - 'examples/**'
   - '**/*.d.ts'
   - 'coverage/**'
-  - 'eslint.config.js'  # Exclude the flat config file that's causing issues
 
 engines:
   eslint:
-    enabled: false  # Explicitly disabled due to flat config compatibility issues
-  
-  # Use other engines for code quality analysis
+    enabled: true
+    # Use legacy .eslintrc.js for Codacy compatibility
+    exclude_paths:
+      - 'eslint.config.js'  # Exclude flat config to force legacy config usage
+      
   duplication:
     enabled: true
     exclude_paths:
       - 'test/**'
+      
   metrics:
     enabled: true
+    
   coverage:
-    enabled: false  # We handle coverage separately via CI
+    enabled: false
