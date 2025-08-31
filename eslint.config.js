@@ -23,9 +23,12 @@ export default [
         Buffer: 'readonly',
       },
     },
+    rules: {
+      complexity: ['error', { max: 20 }],
+    },
   },
   {
-    files: ['tests/**/*.js'],
+    files: ['test/**/*.js'],
     plugins: {},
     // tests run under vitest/jest-like globals
     languageOptions: {
