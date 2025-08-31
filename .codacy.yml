@@ -12,15 +12,15 @@ engines:
     enabled: true
     # Use legacy .eslintrc.js for Codacy compatibility
     exclude_paths:
-      - 'eslint.config.js'  # Exclude flat config to force legacy config usage
-      
+      - 'eslint.config.js' # Exclude flat config to force legacy config usage
+
   duplication:
     enabled: true
     exclude_paths:
       - 'test/**'
-      
+
   metrics:
     enabled: true
-    
+
   coverage:
     enabled: false
