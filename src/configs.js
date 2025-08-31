@@ -1,5 +1,8 @@
 export const getConfigs = (plugin) => {
-  const recommendedRules = { 'vue-fsd/no-processes-layer': 'error' }
+  const recommendedRules = {
+    'vue-fsd/no-processes-layer': 'error',
+    'vue-fsd/sfc-sections-order': 'error',
+  }
   const allRules = { ...recommendedRules }
 
   const languageOptions = {
