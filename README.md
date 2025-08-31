@@ -66,6 +66,7 @@ The plugin provides the rules to enforce [Feature-Sliced Design](https://feature
 | -------------------------------------------------------- | ------------------------------------------------------------------------- |
 | [fsd-layers](./docs/rules/fsd-layers.md)                 | Enforce consistent layer structure in feature-sliced design.              |
 | [no-processes-layer](./docs/rules/no-processes-layer.md) | Ensure deprecated processes layer is not used.                            |
+| [public-api](./docs/rules/public-api.md)                 | Enforce consistent public API structure in FSD slices.                    |
 | [sfc-sections-order](./docs/rules/sfc-sections-order.md) | Enforce consistent order of top-level sections in single-file components. |
 
 ## Roadmap
@@ -76,7 +77,6 @@ As the plugin evolves, we plan to implement the following rules:
 - no-cross-slice-imports: Forbid cross-imports between slices on the same layer.
 - no-layer-public-api: Forbid exposing public APIs from a layer.
 - no-segments-without-slices: Forbid segments without slices.
-- public-api: Enforce consistent public API on slices.
 - no-ui-in-app: Forbid using UI segment in the app layer.
 - no-direct-imports: Forbid direct imports from outside the slice.
 - slice-relative-path: Imports within one slice should be relative.
