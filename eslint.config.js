@@ -29,7 +29,6 @@ export default [
   },
   {
     files: ['test/**/*.js'],
-    plugins: {},
     // tests run under vitest/jest-like globals
     languageOptions: {
       globals: {
