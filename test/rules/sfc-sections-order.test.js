@@ -297,4 +297,16 @@ const msg = 'Hello'
       data: { order: 'script -> template -> style' },
     })
   })
+
+  it('uses default order when invalid order option is provided', () => {
+    const src = `<template><div></div></template><script>export default {}</script><style>h1{color:red;}</style>`
+    const ctx = createContext('src/components/MyComponent.vue', [{ order: ['invalid', 'order'] }])
+    ctx.getSourceCode = () => ({ text: src })
+    const result = runRule(rule, ctx)
+    expect(result.report).toHaveBeenCalledWith({
+      node: undefined,
+      messageId: 'wrongOrder',
+      data: { order: 'script -> template -> style' }, // Uses default order
+    })
+  })
 })

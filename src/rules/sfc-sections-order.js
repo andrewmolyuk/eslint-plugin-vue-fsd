@@ -7,7 +7,58 @@ const defaultOptions = {
   ignore: [],
 }
 
-function processScriptBlocks(descriptor, context, node, tags) {
+function shouldIgnoreFile(filename, ignorePatterns) {
+  if (!ignorePatterns || !Array.isArray(ignorePatterns)) {
+    return false
+  }
+
+  return ignorePatterns.some((pattern) => {
+    try {
+      return minimatch(filename, pattern)
+    } catch {
+      return false
+    }
+  })
+}
+
+function parseOrderOption(options, defaultOrder) {
+  if (Array.isArray(options.order) && options.order.length === 3 && options.order.every((section) => defaultOrder.includes(section))) {
+    return options.order
+  }
+  return defaultOrder
+}
+
+function processVueFile(context, node, filename, order) {
+  const source = context.getSourceCode().text
+  const tags = []
+
+  try {
+    const { descriptor } = parseSFC(source, { filename })
+
+    // Process template
+    if (descriptor.template && descriptor.template.loc) {
+      tags.push({ name: 'template', index: descriptor.template.loc.start.offset })
+    }
+
+    // Process script blocks with ordering validation
+    if (!processScriptBlocks(descriptor, context, node, tags)) {
+      return
+    }
+
+    // Process style blocks with ordering validation
+    if (!processStyleBlocks(descriptor, context, node, tags)) {
+      return
+    }
+
+    // Validate overall section order
+    validateSectionOrder(tags, order, context, node)
+  } catch {
+    context.report({ node, messageId: 'parsingError' })
+    return
+  }
+}
+
+function collectScriptBlocks(descriptor) {
   const scriptBlocks = []
   if (descriptor.scriptSetup && descriptor.scriptSetup.loc) {
     scriptBlocks.push({ type: 'setup', offset: descriptor.scriptSetup.loc.start.offset })
@@ -15,8 +66,10 @@ function processScriptBlocks(descriptor, context, node, tags) {
   if (descriptor.script && descriptor.script.loc) {
     scriptBlocks.push({ type: 'regular', offset: descriptor.script.loc.start.offset })
   }
+  return scriptBlocks
+}
 
-  // Check script setup before script ordering if both exist
+function validateScriptOrder(scriptBlocks, context, node) {
   if (scriptBlocks.length === 2) {
     const setupBlock = scriptBlocks.find((b) => b.type === 'setup')
     const regularBlock = scriptBlocks.find((b) => b.type === 'regular')
@@ -25,16 +78,27 @@ function processScriptBlocks(descriptor, context, node, tags) {
       return false
     }
   }
-
-  // Add script blocks to tags array
-  scriptBlocks.forEach((block) => {
-    tags.push({ name: 'script', index: block.offset })
-  })
-
   return true
 }
 
-function processStyleBlocks(descriptor, context, node, tags) {
+function addScriptBlocksToTags(scriptBlocks, tags) {
+  scriptBlocks.forEach((block) => {
+    tags.push({ name: 'script', index: block.offset })
+  })
+}
+
+function processScriptBlocks(descriptor, context, node, tags) {
+  const scriptBlocks = collectScriptBlocks(descriptor)
+
+  if (!validateScriptOrder(scriptBlocks, context, node)) {
+    return false
+  }
+
+  addScriptBlocksToTags(scriptBlocks, tags)
+  return true
+}
+
+function collectStyleBlocks(descriptor) {
   const styleBlocks = []
   descriptor.styles.forEach((style) => {
     if (style.loc) {
@@ -45,8 +109,10 @@ function processStyleBlocks(descriptor, context, node, tags) {
       })
     }
   })
+  return styleBlocks
+}
 
-  // Check global before scoped style ordering
+function validateStyleOrder(styleBlocks, context, node) {
   const globalStyles = styleBlocks.filter((s) => s.type === 'global')
   const scopedStyles = styleBlocks.filter((s) => s.type === 'scoped')
 
@@ -58,26 +124,39 @@ function processStyleBlocks(descriptor, context, node, tags) {
       return false
     }
   }
-
-  // Add style blocks to tags array
-  styleBlocks.forEach((style) => {
-    tags.push({ name: 'style', index: style.offset })
-  })
-
   return true
 }
 
-function validateSectionOrder(tags, order, context, node) {
-  const names = tags.map((t) => t.name)
+function addStyleBlocksToTags(styleBlocks, tags) {
+  styleBlocks.forEach((style) => {
+    tags.push({ name: 'style', index: style.offset })
+  })
+}
 
+function processStyleBlocks(descriptor, context, node, tags) {
+  const styleBlocks = collectStyleBlocks(descriptor)
+
+  if (!validateStyleOrder(styleBlocks, context, node)) {
+    return false
+  }
+
+  addStyleBlocksToTags(styleBlocks, tags)
+  return true
+}
+
+function checkRequiredSections(tags, context, node) {
+  const names = tags.map((t) => t.name)
   const hasTemplate = names.includes('template')
   const hasScript = names.includes('script')
 
   if (!hasTemplate && !hasScript) {
     context.report({ node, messageId: 'missingScriptOrTemplate' })
-    return
+    return false
   }
+  return true
+}
 
+function groupSectionsByType(tags) {
   // Sort tags by their position in the file
   tags.sort((a, b) => a.index - b.index)
 
@@ -92,8 +171,10 @@ function validateSectionOrder(tags, order, context, node) {
     currentSection = { name: tag.name }
     sections.push(currentSection)
   }
+  return sections
+}
 
-  // Check that sections follow the configured order
+function checkSectionOrder(sections, order, context, node) {
   const sectionOrder = sections.map((s) => order.indexOf(s.name)).filter((i) => i >= 0)
 
   for (let i = 0; i + 1 < sectionOrder.length; i++) {
@@ -102,6 +183,15 @@ function validateSectionOrder(tags, order, context, node) {
       return
     }
   }
+}
+
+function validateSectionOrder(tags, order, context, node) {
+  if (!checkRequiredSections(tags, context, node)) {
+    return
+  }
+
+  const sections = groupSectionsByType(tags)
+  checkSectionOrder(sections, order, context, node)
 }
 
 export default {
@@ -146,55 +236,13 @@ export default {
     const options = parseRuleOptions(context, defaultOptions)
 
     // Check if file should be ignored
-    if (options.ignore && Array.isArray(options.ignore)) {
-      const shouldIgnore = options.ignore.some((pattern) => {
-        try {
-          return minimatch(filename, pattern)
-        } catch {
-          return false
-        }
-      })
-      if (shouldIgnore) return {}
-    }
+    if (shouldIgnoreFile(filename, options.ignore)) return {}
 
-    let order = defaultOptions.order
-    if (
-      Array.isArray(options.order) &&
-      options.order.length === 3 &&
-      options.order.every((section) => defaultOptions.order.includes(section))
-    ) {
-      order = options.order
-    }
+    const order = parseOrderOption(options, defaultOptions.order)
 
     return {
       Program(node) {
-        const source = context.getSourceCode().text
-        const tags = []
-
-        try {
-          const { descriptor } = parseSFC(source, { filename })
-
-          // Process template
-          if (descriptor.template && descriptor.template.loc) {
-            tags.push({ name: 'template', index: descriptor.template.loc.start.offset })
-          }
-
-          // Process script blocks with ordering validation
-          if (!processScriptBlocks(descriptor, context, node, tags)) {
-            return
-          }
-
-          // Process style blocks with ordering validation
-          if (!processStyleBlocks(descriptor, context, node, tags)) {
-            return
-          }
-
-          // Validate overall section order
-          validateSectionOrder(tags, order, context, node)
-        } catch {
-          context.report({ node, messageId: 'parsingError' })
-          return
-        }
+        processVueFile(context, node, filename, order)
       },
     }
   },
