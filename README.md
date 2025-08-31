@@ -17,6 +17,7 @@ A custom ESLint plugin for enforcing FSD patterns in Vue projects.
 ## Features
 
 - Enforces FSD (Feature-Sliced Design) architecture patterns in Vue.js projects.
+- Validates proper layer structure and prevents usage of deprecated layers.
 - Provides a set of rules and guidelines for structuring Vue components and their interactions.
 - Enforces consistent ordering of Vue Single File Component sections.
 - Includes a set of predefined configurations for different project setups.
@@ -63,6 +64,7 @@ The plugin provides the rules to enforce [Feature-Sliced Design](https://feature
 
 | Rule                                                     | Description                                                               |
 | -------------------------------------------------------- | ------------------------------------------------------------------------- |
+| [fsd-layers](./docs/rules/fsd-layers.md)                 | Enforce consistent layer structure in feature-sliced design.              |
 | [no-processes-layer](./docs/rules/no-processes-layer.md) | Ensure deprecated processes layer is not used.                            |
 | [sfc-sections-order](./docs/rules/sfc-sections-order.md) | Enforce consistent order of top-level sections in single-file components. |
 
