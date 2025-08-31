@@ -10,7 +10,7 @@ lint:
 	npx prettier --write "**/*.md" "**/*.json" "**/*.js" "**/*.ts" --log-level warn
 
 test: lint
-	CI=CI npx vitest
+	CI=CI npx vitest --coverage
 
 update:
 	npx npm-check-updates -u
