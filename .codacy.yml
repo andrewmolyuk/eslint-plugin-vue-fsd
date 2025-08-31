@@ -8,19 +8,14 @@ exclude_paths:
   - 'coverage/**'
 
 engines:
-  eslint:
-    enabled: true
-    engine_version: 9
+  eslint-8:
+    enabled: false
 
-  complexity:
+  eslint-9:
     enabled: true
-    exclude_paths:
-      - 'test/**'
 
-  duplication:
+  markdownlint:
     enabled: true
-    exclude_paths:
-      - 'test/**'
 
   metrics:
     enabled: true
