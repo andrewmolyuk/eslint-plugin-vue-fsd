@@ -9,6 +9,46 @@ const defaultOptions = {
   ignore: [],
 }
 
+function getValidSlices(layerPath, ignore) {
+  return fs.readdirSync(layerPath).filter((entry) => {
+    const slicePath = path.join(layerPath, entry)
+    try {
+      return fs.statSync(slicePath).isDirectory() && !ignore.includes(entry)
+    } catch {
+      return false
+    }
+  })
+}
+
+function checkSlicePublicApi(context, node, slice, layer, slicePath, filename) {
+  const sliceEntries = fs.readdirSync(slicePath)
+
+  // Look for the specific filename
+  const hasPublicApi = sliceEntries.includes(filename)
+  const otherIndexFiles = sliceEntries.filter((entry) => {
+    const basename = path.parse(entry).name
+    return basename === 'index' && entry !== filename
+  })
+
+  if (!hasPublicApi) {
+    // No public API found
+    context.report({
+      node,
+      messageId: 'missingPublicApi',
+      data: { slice, layer, filename },
+    })
+  }
+
+  // Report any other index files as invalid
+  for (const invalidFile of otherIndexFiles) {
+    context.report({
+      node,
+      messageId: 'invalidPublicApi',
+      data: { slice, layer, file: invalidFile, filename },
+    })
+  }
+}
+
 export default {
   meta: {
     type: 'problem',
@@ -77,44 +117,12 @@ export default {
               continue
             }
 
-            const slices = fs.readdirSync(layerPath).filter((entry) => {
-              const slicePath = path.join(layerPath, entry)
-              try {
-                return fs.statSync(slicePath).isDirectory() && !ignore.includes(entry)
-              } catch {
-                return false
-              }
-            })
+            const slices = getValidSlices(layerPath, ignore)
 
             // Check each slice for public API
             for (const slice of slices) {
               const slicePath = path.join(layerPath, slice)
-              const sliceEntries = fs.readdirSync(slicePath)
-
-              // Look for the specific filename
-              const hasPublicApi = sliceEntries.includes(filename)
-              const otherIndexFiles = sliceEntries.filter((entry) => {
-                const basename = path.parse(entry).name
-                return basename === 'index' && entry !== filename
-              })
-
-              if (!hasPublicApi) {
-                // No public API found
-                context.report({
-                  node,
-                  messageId: 'missingPublicApi',
-                  data: { slice, layer, filename },
-                })
-              }
-
-              // Report any other index files as invalid
-              for (const invalidFile of otherIndexFiles) {
-                context.report({
-                  node,
-                  messageId: 'invalidPublicApi',
-                  data: { slice, layer, file: invalidFile, filename },
-                })
-              }
+              checkSlicePublicApi(context, node, slice, layer, slicePath, filename)
             }
           }
         } catch {

@@ -285,4 +285,16 @@ const msg = 'Hello'
       data: { order: 'script -> template -> style' },
     })
   })
+
+  it('handles non-array ignore option gracefully', () => {
+    const src = `<template><div></div></template><script>export default {}</script><style>h1{color:red;}</style>`
+    const ctx = createContext('src/components/MyComponent.vue', [{ ignore: 'not-an-array' }])
+    ctx.getSourceCode = () => ({ text: src })
+    const result = runRule(rule, ctx)
+    expect(result.report).toHaveBeenCalledWith({
+      node: undefined,
+      messageId: 'wrongOrder',
+      data: { order: 'script -> template -> style' },
+    })
+  })
 })

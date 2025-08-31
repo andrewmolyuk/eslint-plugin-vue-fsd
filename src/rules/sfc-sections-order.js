@@ -7,6 +7,103 @@ const defaultOptions = {
   ignore: [],
 }
 
+function processScriptBlocks(descriptor, context, node, tags) {
+  const scriptBlocks = []
+  if (descriptor.scriptSetup && descriptor.scriptSetup.loc) {
+    scriptBlocks.push({ type: 'setup', offset: descriptor.scriptSetup.loc.start.offset })
+  }
+  if (descriptor.script && descriptor.script.loc) {
+    scriptBlocks.push({ type: 'regular', offset: descriptor.script.loc.start.offset })
+  }
+
+  // Check script setup before script ordering if both exist
+  if (scriptBlocks.length === 2) {
+    const setupBlock = scriptBlocks.find((b) => b.type === 'setup')
+    const regularBlock = scriptBlocks.find((b) => b.type === 'regular')
+    if (setupBlock.offset > regularBlock.offset) {
+      context.report({ node, messageId: 'scriptSetupBeforeScript' })
+      return false
+    }
+  }
+
+  // Add script blocks to tags array
+  scriptBlocks.forEach((block) => {
+    tags.push({ name: 'script', index: block.offset })
+  })
+
+  return true
+}
+
+function processStyleBlocks(descriptor, context, node, tags) {
+  const styleBlocks = []
+  descriptor.styles.forEach((style) => {
+    if (style.loc) {
+      const isScoped = style.scoped === true
+      styleBlocks.push({
+        type: isScoped ? 'scoped' : 'global',
+        offset: style.loc.start.offset,
+      })
+    }
+  })
+
+  // Check global before scoped style ordering
+  const globalStyles = styleBlocks.filter((s) => s.type === 'global')
+  const scopedStyles = styleBlocks.filter((s) => s.type === 'scoped')
+
+  if (globalStyles.length > 0 && scopedStyles.length > 0) {
+    const lastGlobal = Math.max(...globalStyles.map((s) => s.offset))
+    const firstScoped = Math.min(...scopedStyles.map((s) => s.offset))
+    if (firstScoped < lastGlobal) {
+      context.report({ node, messageId: 'scopedStyleAfterGlobal' })
+      return false
+    }
+  }
+
+  // Add style blocks to tags array
+  styleBlocks.forEach((style) => {
+    tags.push({ name: 'style', index: style.offset })
+  })
+
+  return true
+}
+
+function validateSectionOrder(tags, order, context, node) {
+  const names = tags.map((t) => t.name)
+
+  const hasTemplate = names.includes('template')
+  const hasScript = names.includes('script')
+
+  if (!hasTemplate && !hasScript) {
+    context.report({ node, messageId: 'missingScriptOrTemplate' })
+    return
+  }
+
+  // Sort tags by their position in the file
+  tags.sort((a, b) => a.index - b.index)
+
+  // Group consecutive blocks of the same type
+  const sections = []
+  let currentSection = null
+
+  for (const tag of tags) {
+    if (currentSection && currentSection.name === tag.name) {
+      continue // Skip, we already have this section type
+    }
+    currentSection = { name: tag.name }
+    sections.push(currentSection)
+  }
+
+  // Check that sections follow the configured order
+  const sectionOrder = sections.map((s) => order.indexOf(s.name)).filter((i) => i >= 0)
+
+  for (let i = 0; i + 1 < sectionOrder.length; i++) {
+    if (sectionOrder[i] > sectionOrder[i + 1]) {
+      context.report({ node, messageId: 'wrongOrder', data: { order: order.join(' -> ') } })
+      return
+    }
+  }
+}
+
 export default {
   meta: {
     type: 'suggestion',
@@ -74,106 +171,29 @@ export default {
         const source = context.getSourceCode().text
         const tags = []
 
-        // Use SFC compiler to parse blocks accurately
         try {
           const { descriptor } = parseSFC(source, { filename })
 
-          // Add template block
+          // Process template
           if (descriptor.template && descriptor.template.loc) {
             tags.push({ name: 'template', index: descriptor.template.loc.start.offset })
           }
 
-          // Add script blocks - ensure script setup comes before regular script
-          const scriptBlocks = []
-          if (descriptor.scriptSetup && descriptor.scriptSetup.loc) {
-            scriptBlocks.push({ type: 'setup', offset: descriptor.scriptSetup.loc.start.offset })
-          }
-          if (descriptor.script && descriptor.script.loc) {
-            scriptBlocks.push({ type: 'regular', offset: descriptor.script.loc.start.offset })
+          // Process script blocks with ordering validation
+          if (!processScriptBlocks(descriptor, context, node, tags)) {
+            return
           }
 
-          // Check script setup before script ordering if both exist
-          if (scriptBlocks.length === 2) {
-            const setupBlock = scriptBlocks.find((b) => b.type === 'setup')
-            const regularBlock = scriptBlocks.find((b) => b.type === 'regular')
-            if (setupBlock.offset > regularBlock.offset) {
-              context.report({ node, messageId: 'scriptSetupBeforeScript' })
-              return
-            }
+          // Process style blocks with ordering validation
+          if (!processStyleBlocks(descriptor, context, node, tags)) {
+            return
           }
 
-          // Add script blocks to tags array
-          scriptBlocks.forEach((block) => {
-            tags.push({ name: 'script', index: block.offset })
-          })
-
-          // Add style blocks - ensure global styles come before scoped styles
-          const styleBlocks = []
-          descriptor.styles.forEach((style) => {
-            if (style.loc) {
-              const isScoped = style.scoped === true
-              styleBlocks.push({
-                type: isScoped ? 'scoped' : 'global',
-                offset: style.loc.start.offset,
-              })
-            }
-          })
-
-          // Check global before scoped style ordering
-          const globalStyles = styleBlocks.filter((s) => s.type === 'global')
-          const scopedStyles = styleBlocks.filter((s) => s.type === 'scoped')
-
-          if (globalStyles.length > 0 && scopedStyles.length > 0) {
-            const lastGlobal = Math.max(...globalStyles.map((s) => s.offset))
-            const firstScoped = Math.min(...scopedStyles.map((s) => s.offset))
-            if (firstScoped < lastGlobal) {
-              context.report({ node, messageId: 'scopedStyleAfterGlobal' })
-              return
-            }
-          }
-
-          // Add style blocks to tags array
-          styleBlocks.forEach((style) => {
-            tags.push({ name: 'style', index: style.offset })
-          })
+          // Validate overall section order
+          validateSectionOrder(tags, order, context, node)
         } catch {
           context.report({ node, messageId: 'parsingError' })
           return
-        }
-
-        const names = tags.map((t) => t.name)
-
-        const hasTemplate = names.includes('template')
-        const hasScript = names.includes('script')
-
-        if (!hasTemplate && !hasScript) {
-          context.report({ node, messageId: 'missingScriptOrTemplate' })
-          return
-        }
-
-        // Sort tags by their position in the file
-        tags.sort((a, b) => a.index - b.index)
-
-        // Group consecutive blocks of the same type
-        const sections = []
-        let currentSection = null
-
-        for (const tag of tags) {
-          if (currentSection && currentSection.name === tag.name) {
-            continue // Skip, we already have this section type
-          }
-          currentSection = { name: tag.name }
-          sections.push(currentSection)
-        }
-
-        // Check that sections follow the configured order
-        const sectionOrder = sections.map((s) => order.indexOf(s.name)).filter((i) => i >= 0)
-
-        for (let i = 0; i + 1 < sectionOrder.length; i++) {
-          if (sectionOrder[i] > sectionOrder[i + 1]) {
-            context.report({ node, messageId: 'wrongOrder', data: { order: order.join(' -> ') } })
-            return
-          }
         }
       },
     }

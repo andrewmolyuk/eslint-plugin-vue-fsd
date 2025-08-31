@@ -10,6 +10,72 @@ const defaultOptions = {
   ignore: [],
 }
 
+function shouldIgnoreEntry(entry, ignore) {
+  if (!Array.isArray(ignore) || ignore.length === 0) {
+    return false
+  }
+
+  return ignore.some((pattern) => {
+    try {
+      return minimatch(entry, pattern)
+    } catch {
+      return false
+    }
+  })
+}
+
+function isValidEntry(entry, src) {
+  const fullPath = path.join(src, entry)
+  try {
+    const stat = fs.statSync(fullPath)
+    return stat.isDirectory() || stat.isFile()
+  } catch {
+    return false
+  }
+}
+
+function getFilteredEntries(src, ignore) {
+  const entries = fs.readdirSync(src)
+  return entries.filter((entry) => {
+    if (shouldIgnoreEntry(entry, ignore)) {
+      return false
+    }
+    return isValidEntry(entry, src)
+  })
+}
+
+function checkRequiredEntries(context, node, required, filteredEntries, src) {
+  if (!Array.isArray(required) || required.length === 0) {
+    return
+  }
+
+  for (const requiredEntry of required) {
+    if (!filteredEntries.includes(requiredEntry)) {
+      context.report({
+        node,
+        messageId: 'missingRequired',
+        data: { name: requiredEntry, src },
+      })
+    }
+  }
+}
+
+function checkAllowedEntries(context, node, allowed, filteredEntries, src) {
+  if (!Array.isArray(allowed) || allowed.length === 0) {
+    return
+  }
+
+  for (const entry of filteredEntries) {
+    if (!allowed.includes(entry)) {
+      context.report({
+        node,
+        messageId: 'notAllowed',
+        data: { name: entry, src, allowed: allowed.join(', ') },
+      })
+    }
+  }
+}
+
 export default {
   meta: {
     type: 'problem',
@@ -77,55 +143,9 @@ export default {
             return
           }
 
-          const entries = fs.readdirSync(src)
-          const filteredEntries = entries.filter((entry) => {
-            // Skip ignored patterns
-            if (Array.isArray(ignore) && ignore.length > 0) {
-              const shouldIgnore = ignore.some((pattern) => {
-                try {
-                  return minimatch(entry, pattern)
-                } catch {
-                  return false
-                }
-              })
-              if (shouldIgnore) return false
-            }
-
-            // Only check directories and specific files
-            const fullPath = path.join(src, entry)
-            try {
-              const stat = fs.statSync(fullPath)
-              return stat.isDirectory() || stat.isFile()
-            } catch {
-              return false
-            }
-          })
-
-          // Check for missing required entries
-          if (Array.isArray(required) && required.length > 0) {
-            for (const requiredEntry of required) {
-              if (!filteredEntries.includes(requiredEntry)) {
-                context.report({
-                  node,
-                  messageId: 'missingRequired',
-                  data: { name: requiredEntry, src },
-                })
-              }
-            }
-          }
-
-          // Check for disallowed entries (only if allowed list is provided)
-          if (Array.isArray(allowed) && allowed.length > 0) {
-            for (const entry of filteredEntries) {
-              if (!allowed.includes(entry)) {
-                context.report({
-                  node,
-                  messageId: 'notAllowed',
-                  data: { name: entry, src, allowed: allowed.join(', ') },
-                })
-              }
-            }
-          }
+          const filteredEntries = getFilteredEntries(src, ignore)
+          checkRequiredEntries(context, node, required, filteredEntries, src)
+          checkAllowedEntries(context, node, allowed, filteredEntries, src)
         } catch {
           // ignore filesystem errors
         }
