@@ -1,7 +1,11 @@
+import js from '@eslint/js'
+
 export default [
   // ignore common build and dependency folders
   { ignores: ['node_modules/**', 'dist/**', '.git/**', 'examples/**', '**/*.d.ts'] },
+  js.configs.recommended,
   {
+    files: ['**/*.js'],
     // default language options and globals for plugin source files (Node environment)
     languageOptions: {
       ecmaVersion: 2022,
