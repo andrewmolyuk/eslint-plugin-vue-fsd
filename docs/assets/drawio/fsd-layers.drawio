@@ -1,0 +1,70 @@
+<mxfile host="65bd71144e">
+    <diagram id="fsd-layers" name="Page-1">
+        <mxGraphModel dx="869" dy="411" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="layer_app" value="app" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#e8d7ff;strokeWidth=2;fontSize=19;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="20" width="160" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer_processes" value="processes" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#cfeaff;strokeWidth=2;fontSize=19;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="78" width="160" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer_pages" value="pages" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#dff7f2;strokeWidth=2;fontSize=19;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="136" width="160" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer_widgets" value="widgets" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#e6f8d8;strokeWidth=2;fontSize=19;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="194" width="160" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer_features" value="features" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#fff2c8;strokeWidth=2;fontSize=19;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="252" width="160" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="edgeStyle=none;html=1;endArrow=none;endFill=0;strokeColor=#808080;strokeWidth=2;" edge="1" parent="1" source="layer_entities" target="3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer_entities" value="entities" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#ffd9d9;strokeWidth=2;fontSize=19;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="310" width="160" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer_shared" value="shared" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#ffdfe8;strokeWidth=2;fontSize=19;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="368" width="160" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="caption_layers" value="Layers" style="text;html=1;align=center;verticalAlign=top;strokeColor=none;fillColor=none;fontSize=19;fontStyle=1;fontColor=#808080;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="430" width="160" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="slice_user" value="user" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#fdeee9;strokeWidth=2;fontSize=19;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="258" width="140" height="44" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="" style="edgeStyle=none;html=1;endArrow=none;endFill=0;strokeColor=#808080;strokeWidth=2;" edge="1" parent="1" source="slice_post" target="4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="slice_post" value="post" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#fdeee9;strokeWidth=2;fontSize=19;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="312" width="140" height="44" as="geometry"/>
+                </mxCell>
+                <mxCell id="slice_comment" value="comment" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#fdeee9;strokeWidth=2;fontSize=19;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="366" width="140" height="44" as="geometry"/>
+                </mxCell>
+                <mxCell id="caption_slices" value="Slices" style="text;html=1;align=center;verticalAlign=top;strokeColor=none;fillColor=none;fontSize=19;fontStyle=1;fontColor=#808080;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="430" width="140" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="segment_ui" value="ui" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#f9f1ff;strokeWidth=2;fontSize=19;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="258" width="120" height="44" as="geometry"/>
+                </mxCell>
+                <mxCell id="segment_model" value="model" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#f9f1ff;strokeWidth=2;fontSize=19;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="312" width="120" height="44" as="geometry"/>
+                </mxCell>
+                <mxCell id="segment_api" value="api" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#f9f1ff;strokeWidth=2;fontSize=19;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="366" width="120" height="44" as="geometry"/>
+                </mxCell>
+                <mxCell id="caption_segments" value="Segments" style="text;html=1;align=center;verticalAlign=top;strokeColor=none;fillColor=none;fontSize=19;fontStyle=1;fontColor=#808080;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="430" width="120" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="" style="labelPosition=right;align=left;strokeWidth=2;shape=mxgraph.mockup.markup.curlyBrace;html=1;shadow=0;dashed=0;strokeColor=#808080;direction=north;" vertex="1" parent="1">
+                    <mxGeometry x="210" y="260" width="20" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="" style="labelPosition=right;align=left;strokeWidth=2;shape=mxgraph.mockup.markup.curlyBrace;html=1;shadow=0;dashed=0;strokeColor=#808080;direction=north;" vertex="1" parent="1">
+                    <mxGeometry x="413" y="260" width="20" height="150" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

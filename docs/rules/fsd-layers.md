@@ -4,6 +4,8 @@ Enforce consistent layer structure in feature-sliced design.
 
 This rule checks that the source directory contains only the required and allowed folders/files according to Feature-Sliced Design principles. It runs only once per ESLint session to avoid redundant filesystem checks.
 
+![FSD Layers](../assets/fsd-layers.png)
+
 ## Rule Details
 
 This rule enforces FSD layer structure by:
