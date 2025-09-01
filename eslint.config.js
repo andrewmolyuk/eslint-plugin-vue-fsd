@@ -7,7 +7,10 @@ export default [
   { ignores: ['node_modules/**', 'dist/**', '.git/**', 'examples/**', '**/*.d.ts'] },
   js.configs.recommended,
   eslintPluginPrettierRecommended,
-  eslintPlugin.configs.recommended,
+  {
+    files: ['src/**/*.js'],
+    ...eslintPlugin.configs.recommended,
+  },
   {
     files: ['**/*.js'],
     // default language options and globals for plugin source files (Node environment)
