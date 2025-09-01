@@ -3,6 +3,7 @@ import noProcessesLayer from './rules/no-processes-layer.js'
 import sfcSectionsOrder from './rules/sfc-sections-order.js'
 import fsdLayers from './rules/fsd-layers.js'
 import publicApi from './rules/public-api.js'
+import noUiInApp from './rules/no-ui-in-app.js'
 import { getConfigs } from './configs.js'
 
 const plugin = {
@@ -12,6 +13,7 @@ const plugin = {
     'sfc-sections-order': sfcSectionsOrder,
     'fsd-layers': fsdLayers,
     'public-api': publicApi,
+    'no-ui-in-app': noUiInApp,
   },
   processors: {},
   configs: {},
