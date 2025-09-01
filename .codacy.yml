@@ -13,6 +13,7 @@ engines:
 
   eslint-9:
     enabled: true
+    configuration_file: eslint.minimal.config.js
 
   markdownlint:
     enabled: true
