@@ -1,9 +1,11 @@
 import js from '@eslint/js'
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 
 export default [
   // ignore common build and dependency folders
   { ignores: ['node_modules/**', 'dist/**', '.git/**', 'examples/**', '**/*.d.ts'] },
   js.configs.recommended,
+  eslintPluginPrettierRecommended,
   {
     files: ['**/*.js'],
     // default language options and globals for plugin source files (Node environment)
