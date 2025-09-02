@@ -1,0 +1,50 @@
+name: 'Handle Code of Conduct reports'
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  handle-coc-report:
+    name: Label, assign and acknowledge CoC reports
+    runs-on: ubuntu-latest
+    steps:
+      - name: Label, assign and comment on CoC reports
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            const titleMatches = issue.title && issue.title.toLowerCase().startsWith('code of conduct report');
+            const hasCocLabel = (issue.labels || []).some(l => l.name === 'code-of-conduct');
+
+            if (!titleMatches && !hasCocLabel) {
+              core.info('Not a Code of Conduct report (title and labels do not match). Skipping.');
+              return;
+            }
+
+            // Ensure the repository has these labels and add them to the issue
+            const labelsToAdd = ['code-of-conduct', 'private'];
+            try {
+              await github.issues.addLabels({ owner, repo, issue_number: issue.number, labels: labelsToAdd });
+            } catch (err) {
+              core.warning('Failed to add labels: ' + err.message);
+            }
+
+            // Assign the repository owner (notify maintainer). Update as needed.
+            const maintainer = 'andrewmolyuk';
+            try {
+              await github.issues.addAssignees({ owner, repo, issue_number: issue.number, assignees: [maintainer] });
+            } catch (err) {
+              core.warning('Failed to add assignee: ' + err.message);
+            }
+
+            // Post a short acknowledgement comment so reporter knows maintainers were notified
+            const commentBody = `Thank you for your report — maintainers have been notified and will follow up privately.`;
+            try {
+              await github.issues.createComment({ owner, repo, issue_number: issue.number, body: commentBody });
+            } catch (err) {
+              core.warning('Failed to create comment: ' + err.message);
+            }

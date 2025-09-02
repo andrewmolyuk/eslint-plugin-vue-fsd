@@ -93,7 +93,12 @@ We are always open to suggestions and contributions for new rules and improvemen
 
 ## Contribution
 
-Pull requests and issues are welcome! Please follow the code style and add tests for new rules.
+Pull requests and issues are welcome! Before contributing, please read the contribution guidelines and the code of conduct:
+
+- [Contributing](./CONTRIBUTING.md)
+- [Code of Conduct](./CODE_OF_CONDUCT.md)
+
+Please follow the code style and add tests for new rules.
 
 ### Development Setup
 
