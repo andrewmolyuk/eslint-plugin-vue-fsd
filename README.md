@@ -62,22 +62,21 @@ module.exports = {
 
 The plugin provides the rules to enforce [Feature-Sliced Design](https://feature-sliced.design/) principles in [Vue.js](https://vuejs.org/) projects.
 
-| Rule                                                       | Description                                                                            |
-| ---------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| [fsd-layers](./docs/rules/fsd-layers.md)                   | Enforce consistent layer structure in feature-sliced design.                           |
-| [no-processes-layer](./docs/rules/no-processes-layer.md)   | Ensure deprecated processes layer is not used.                                         |
-| [public-api](./docs/rules/public-api.md)                   | Enforce consistent public API structure in FSD slices.                                 |
-| [sfc-sections-order](./docs/rules/sfc-sections-order.md)   | Enforce consistent order of top-level sections in single-file components.              |
-| [no-ui-in-app](./docs/rules/no-ui-in-app.md)               | Forbid placing `ui` segment directly inside the `app` layer.                           |
-| [no-layer-public-api](./docs/rules/no-layer-public-api.md) | Forbid placing a layer-level public API file (e.g. `index.ts`) at the root of a layer. |
+| Rule                                                               | Description                                                                            |
+| ------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| [fsd-layers](./docs/rules/fsd-layers.md)                           | Enforce consistent layer structure in feature-sliced design.                           |
+| [no-processes-layer](./docs/rules/no-processes-layer.md)           | Ensure deprecated processes layer is not used.                                         |
+| [public-api](./docs/rules/public-api.md)                           | Enforce consistent public API structure in FSD slices.                                 |
+| [sfc-sections-order](./docs/rules/sfc-sections-order.md)           | Enforce consistent order of top-level sections in single-file components.              |
+| [no-ui-in-app](./docs/rules/no-ui-in-app.md)                       | Forbid placing `ui` segment directly inside the `app` layer.                           |
+| [no-layer-public-api](./docs/rules/no-layer-public-api.md)         | Forbid placing a layer-level public API file (e.g. `index.ts`) at the root of a layer. |
+| [no-higher-level-imports](./docs/rules/no-higher-level-imports.md) | Forbid importing from higher FSD layers.                                               |
 
 ## Roadmap
 
 As the plugin evolves, we plan to implement the following rules:
 
-- no-higher-level-imports: Forbid imports from higher layers.
 - no-cross-slice-imports: Forbid cross-imports between slices on the same layer.
-- no-layer-public-api: Forbid exposing public APIs from a layer.
 - no-segments-without-slices: Forbid segments without slices.
 - no-direct-imports: Forbid direct imports from outside the slice.
 - slice-relative-path: Imports within one slice should be relative.

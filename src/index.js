@@ -5,6 +5,7 @@ import fsdLayers from './rules/fsd-layers.js'
 import publicApi from './rules/public-api.js'
 import noUiInApp from './rules/no-ui-in-app.js'
 import noLayerPublicApi from './rules/no-layer-public-api.js'
+import noHigherLevelImports from './rules/no-higher-level-imports.js'
 import { getConfigs } from './configs.js'
 
 const plugin = {
@@ -16,6 +17,7 @@ const plugin = {
     'public-api': publicApi,
     'no-ui-in-app': noUiInApp,
     'no-layer-public-api': noLayerPublicApi,
+    'no-higher-level-imports': noHigherLevelImports,
   },
   processors: {},
   configs: {},

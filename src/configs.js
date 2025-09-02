@@ -1,13 +1,16 @@
 export const getConfigs = (plugin) => {
   const recommendedRules = {
     'vue-fsd/no-processes-layer': 'error',
-    'vue-fsd/no-ui-in-app': 'error',
     'vue-fsd/no-layer-public-api': 'error',
+    'vue-fsd/no-higher-level-imports': 'error',
     'vue-fsd/sfc-sections-order': 'error',
     'vue-fsd/fsd-layers': 'error',
     'vue-fsd/public-api': 'error',
   }
-  const allRules = { ...recommendedRules }
+  const allRules = {
+    ...recommendedRules,
+    'vue-fsd/no-ui-in-app': 'error',
+  }
 
   const languageOptions = {
     ecmaVersion: 2022,
