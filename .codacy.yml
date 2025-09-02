@@ -1,0 +1,9 @@
+engines:
+  duplication:
+    enabled: true
+    exclude_paths:
+      - 'test/**'
+  metrics:
+    enabled: true
+    exclude_paths:
+      - 'test/**'
