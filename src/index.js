@@ -4,6 +4,7 @@ import sfcSectionsOrder from './rules/sfc-sections-order.js'
 import fsdLayers from './rules/fsd-layers.js'
 import publicApi from './rules/public-api.js'
 import noUiInApp from './rules/no-ui-in-app.js'
+import noLayerPublicApi from './rules/no-layer-public-api.js'
 import { getConfigs } from './configs.js'
 
 const plugin = {
@@ -14,6 +15,7 @@ const plugin = {
     'fsd-layers': fsdLayers,
     'public-api': publicApi,
     'no-ui-in-app': noUiInApp,
+    'no-layer-public-api': noLayerPublicApi,
   },
   processors: {},
   configs: {},

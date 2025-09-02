@@ -62,13 +62,14 @@ module.exports = {
 
 The plugin provides the rules to enforce [Feature-Sliced Design](https://feature-sliced.design/) principles in [Vue.js](https://vuejs.org/) projects.
 
-| Rule                                                     | Description                                                               |
-| -------------------------------------------------------- | ------------------------------------------------------------------------- |
-| [fsd-layers](./docs/rules/fsd-layers.md)                 | Enforce consistent layer structure in feature-sliced design.              |
-| [no-processes-layer](./docs/rules/no-processes-layer.md) | Ensure deprecated processes layer is not used.                            |
-| [public-api](./docs/rules/public-api.md)                 | Enforce consistent public API structure in FSD slices.                    |
-| [sfc-sections-order](./docs/rules/sfc-sections-order.md) | Enforce consistent order of top-level sections in single-file components. |
-| [no-ui-in-app](./docs/rules/no-ui-in-app.md)             | Forbid placing `ui` segment directly inside the `app` layer.              |
+| Rule                                                       | Description                                                                            |
+| ---------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| [fsd-layers](./docs/rules/fsd-layers.md)                   | Enforce consistent layer structure in feature-sliced design.                           |
+| [no-processes-layer](./docs/rules/no-processes-layer.md)   | Ensure deprecated processes layer is not used.                                         |
+| [public-api](./docs/rules/public-api.md)                   | Enforce consistent public API structure in FSD slices.                                 |
+| [sfc-sections-order](./docs/rules/sfc-sections-order.md)   | Enforce consistent order of top-level sections in single-file components.              |
+| [no-ui-in-app](./docs/rules/no-ui-in-app.md)               | Forbid placing `ui` segment directly inside the `app` layer.                           |
+| [no-layer-public-api](./docs/rules/no-layer-public-api.md) | Forbid placing a layer-level public API file (e.g. `index.ts`) at the root of a layer. |
 
 ## Roadmap
 
