@@ -15,7 +15,6 @@ describe('plugin configs', () => {
     // rules map should contain the recommended rules
     expect(cfg.rules).toBeDefined()
     expect(cfg.rules['vue-fsd/no-processes-layer']).toBe('error')
-    expect(cfg.rules['vue-fsd/no-ui-in-app']).toBe('error')
 
     // languageOptions should be present for modern config
     expect(cfg.languageOptions).toBeDefined()
@@ -31,6 +30,15 @@ describe('plugin configs', () => {
 
     expect(legacy.rules).toBeDefined()
     expect(legacy.rules['vue-fsd/no-processes-layer']).toBe('error')
-    expect(legacy.rules['vue-fsd/no-ui-in-app']).toBe('error')
+  })
+
+  it('provides all preset that includes no-ui-in-app', () => {
+    const all = plugin.configs.all
+    expect(Array.isArray(all)).toBe(true)
+
+    const cfg = all[0]
+    expect(cfg).toBeDefined()
+    expect(cfg.rules).toBeDefined()
+    expect(cfg.rules['vue-fsd/no-ui-in-app']).toBe('error')
   })
 })
