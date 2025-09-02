@@ -3,7 +3,7 @@ engines:
     enabled: true
     exclude_paths:
       - 'test/**'
-  metrics:
+  metric:
     enabled: true
     exclude_paths:
       - 'test/**'
