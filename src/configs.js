@@ -6,6 +6,7 @@ export const getConfigs = (plugin) => {
     'vue-fsd/sfc-sections-order': 'error',
     'vue-fsd/fsd-layers': 'error',
     'vue-fsd/public-api': 'error',
+    'vue-fsd/no-cross-slice-imports': 'error',
   }
   const allRules = {
     ...recommendedRules,

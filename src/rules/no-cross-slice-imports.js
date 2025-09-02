@@ -1,11 +1,10 @@
 import { parseRuleOptions } from '../utils.js'
 import { shouldIgnoreFile } from './sfc-sections-order-utils.js'
-// ...existing code...
 import { isIgnoredImport, extractImportTarget, getLayerAndSliceFromFilename } from '../utils.js'
 
 const defaultOptions = {
   src: 'src',
-  layers: ['app', 'pages', 'widgets', 'features', 'entities', 'shared'],
+  layers: ['pages', 'widgets', 'features', 'entities'],
   ignore: [],
 }
 
@@ -13,8 +12,8 @@ export default {
   meta: {
     type: 'problem',
     docs: {
-      description: 'Forbid importing from higher FSD layers.',
-      recommended: true,
+      description: 'Forbid cross-imports between slices on the same layer.',
+      recommended: false,
     },
     schema: [
       {
@@ -29,7 +28,7 @@ export default {
     ],
     defaultOptions: [defaultOptions],
     messages: {
-      forbidden: 'Import from higher layer "{{imported}}" is forbidden in "{{current}}" file.',
+      forbidden: 'Cross-slice import "{{importPath}}" is forbidden inside the same layer "{{layer}}".',
     },
   },
 
@@ -38,13 +37,13 @@ export default {
     const filename = context.getFilename && context.getFilename()
     if (!filename) return {}
 
-    // file-level ignore
     if (shouldIgnoreFile(filename, options.ignore)) return {}
 
     const fileInfo = getLayerAndSliceFromFilename(filename, options.src)
-    if (!fileInfo) return {}
+    if (!fileInfo || !fileInfo.slice) return {}
 
     const currentLayer = fileInfo.layer
+    const currentSlice = fileInfo.slice
     const layerIndex = options.layers.indexOf(currentLayer)
     if (layerIndex === -1) return {}
 
@@ -52,14 +51,14 @@ export default {
       try {
         if (isIgnoredImport(value, options.ignore)) return
         const imported = extractImportTarget(value, options.src)
-        if (!imported || !imported.layer) return
+        if (!imported || !imported.layer || !imported.slice) return
 
-        const importedIndex = options.layers.indexOf(imported.layer)
-        if (importedIndex === -1) return
+        // only check when same layer
+        if (imported.layer !== currentLayer) return
+        if (imported.slice === currentSlice) return
 
-        if (importedIndex < layerIndex) {
-          context.report({ node, messageId: 'forbidden', data: { imported: imported.layer, current: currentLayer } })
-        }
+        // report cross-slice import
+        context.report({ node, messageId: 'forbidden', data: { importPath: value, layer: currentLayer } })
       } catch {
         // ignore
       }

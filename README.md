@@ -16,12 +16,13 @@ A custom ESLint plugin for enforcing FSD patterns in Vue projects.
 
 ## Features
 
-- Enforces FSD (Feature-Sliced Design) architecture patterns in Vue.js projects.
-- Validates proper layer structure and prevents usage of deprecated layers.
-- Provides a set of rules and guidelines for structuring Vue components and their interactions.
-- Enforces consistent ordering of Vue Single File Component sections.
-- Includes a set of predefined configurations for different project setups.
-- Maintains 100% test coverage for reliability and quality assurance.
+- **FSD Architecture Enforcement**: Validates Feature-Sliced Design patterns in Vue.js projects with comprehensive rule coverage.
+- **Layer Structure Validation**: Enforces proper layer hierarchy and prevents usage of deprecated layers.
+- **Import Control**: Prevents higher-level imports and cross-slice imports to maintain architectural boundaries.
+- **Vue.js Integration**: Provides specialized rules for Vue Single File Components, including section ordering.
+- **Flexible Configuration**: Includes predefined configurations (recommended/all) with customizable options for different project setups.
+- **High Quality Assurance**: Maintains 100% test coverage across all rules and utilities for reliability.
+- **Performance Optimized**: Efficient rule execution with minimal impact on linting performance.
 
 ## Installation
 
@@ -31,32 +32,35 @@ npm install eslint-plugin-vue-fsd --save-dev
 
 ## Usage
 
-We provide two predefined configurations to help enforce FSD principles in your Vue.js projects.
+We provide two predefined configurations to help enforce FSD principles in your Vue.js projects:
 
-- recommended - enables the rules that recommended best practices for FSD and Vue.js development.
-- all - enables all of the rules shipped with eslint-plugin-vue-fsd.
+- **recommended** - enables the rules that follow best practices for FSD and Vue.js development.
+- **all** - enables all of the rules shipped with eslint-plugin-vue-fsd.
 
-Eslint v9+ configuration (Recommended):
+### ESLint v9+ Configuration (Recommended)
 
 ```javascript
 import vueFsdPlugin from 'eslint-plugin-vue-fsd'
 
-// .eslintrc.js
-module.exports = {
-  ...vueFsdPlugin.configs.recommended,
-}
+export default [...vueFsdPlugin.configs.recommended]
 ```
 
-Legacy Eslint v8 configuration:
+### Legacy ESLint v8 Configuration
 
 ```javascript
-import vueFsdPlugin from 'eslint-plugin-vue-fsd'
-
 // .eslintrc.js
 module.exports = {
   extends: ['plugin:vue-fsd/legacy/recommended'],
 }
 ```
+
+### Quick Start
+
+1. Install the plugin: `npm install eslint-plugin-vue-fsd --save-dev`
+2. Add the recommended configuration to your ESLint config
+3. Run: `npx eslint src/`
+
+The plugin will now enforce FSD patterns in your Vue.js project!
 
 ## Rules
 
@@ -71,12 +75,12 @@ The plugin provides the rules to enforce [Feature-Sliced Design](https://feature
 | [no-ui-in-app](./docs/rules/no-ui-in-app.md)                       | Forbid placing `ui` segment directly inside the `app` layer.                           |
 | [no-layer-public-api](./docs/rules/no-layer-public-api.md)         | Forbid placing a layer-level public API file (e.g. `index.ts`) at the root of a layer. |
 | [no-higher-level-imports](./docs/rules/no-higher-level-imports.md) | Forbid importing from higher FSD layers.                                               |
+| [no-cross-slice-imports](./docs/rules/no-cross-slice-imports.md)   | Forbid cross-imports between slices on the same layer.                                 |
 
 ## Roadmap
 
 As the plugin evolves, we plan to implement the following rules:
 
-- no-cross-slice-imports: Forbid cross-imports between slices on the same layer.
 - no-segments-without-slices: Forbid segments without slices.
 - no-direct-imports: Forbid direct imports from outside the slice.
 - slice-relative-path: Imports within one slice should be relative.
@@ -90,6 +94,21 @@ We are always open to suggestions and contributions for new rules and improvemen
 ## Contribution
 
 Pull requests and issues are welcome! Please follow the code style and add tests for new rules.
+
+### Development Setup
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Run tests: `npm test`
+4. Run linting: `npm run lint`
+
+### Adding New Rules
+
+1. Create the rule file in `src/rules/`
+2. Add comprehensive tests in `test/rules/`
+3. Create documentation in `docs/rules/`
+4. Update the README and configurations
+5. Ensure 100% test coverage
 
 ## License
 
