@@ -1,6 +1,5 @@
 .PHONY: install lint test update drawio
 
-
 install:
 	npm install --no-audit --no-fund 
 
